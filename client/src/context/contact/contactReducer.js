@@ -37,20 +37,20 @@ export default (state, action) => {
     case CLEAR_CURRENT:
       return {
         ...state,
-        current: null
+        current: null,
       }
-    case FILTER_CONTACTS: 
+    case FILTER_CONTACTS:
       return {
         ...state,
-        filtered: state.contacts.filter(contact => {
+        filtered: state.contacts.filter((contact) => {
           const regex = new RegExp(`${action.payload}`, 'gi')
           return contact.name.match(regex) || contact.email.match(regex)
-        })
+        }),
       }
     case CLEAR_FILTER:
       return {
         ...state,
-        filtered: null
+        filtered: null,
       }
     default:
       return state
