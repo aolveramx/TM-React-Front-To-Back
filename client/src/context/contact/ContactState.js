@@ -6,7 +6,7 @@ import {
   ADD_CONTACT,
   DELETE_CONTACT,
   SET_CURRENT,
-  CLEAR_CONTACT,
+  CLEAR_CURRENT,
   UPDATE_CONTACT,
   FILTER_CONTACTS,
   CLEAR_FILTER
@@ -45,7 +45,7 @@ const ContactState = props => {
 
   //Delete Contact
 
-  //Set Current contact
+  //Set Current Contact
 
   //Clear Current Contact
 
@@ -60,7 +60,7 @@ const ContactState = props => {
     value={{
       contacts: state.contacts
     }}>
-      { props.childern }
+      { props.children }
     </ContactContext.Provider>
   )
 }
