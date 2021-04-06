@@ -6,7 +6,7 @@ const ContactFilter = () => {
   const text = useRef('')
 
   useEffect(() => {
-    if(filtered === null) {
+    if (filtered === null) {
       text.current.value = ''
     }
   })
@@ -23,7 +23,12 @@ const ContactFilter = () => {
 
   return (
     <form>
-      <input ref={text} type="text" placeholder="filter Contacts..." onChange={onChange}/>
+      <input
+        ref={text}
+        type='text'
+        placeholder='filter Contacts...'
+        onChange={onChange}
+      />
     </form>
   )
 }

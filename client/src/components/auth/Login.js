@@ -37,7 +37,7 @@ const Login = (props) => {
     } else {
       login({
         email,
-        password
+        password,
       })
     }
   }

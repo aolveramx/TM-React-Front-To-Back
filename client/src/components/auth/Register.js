@@ -10,11 +10,11 @@ const Register = (props) => {
   const { register, error, clearErrors, isAuthenticated } = authContext
 
   useEffect(() => {
-    if(isAuthenticated) {
+    if (isAuthenticated) {
       props.history.push('/') //To redirect in React
     }
 
-    if(error === 'User already exists') {
+    if (error === 'User already exists') {
       setAlert(error, 'danger')
       clearErrors()
     }
@@ -42,7 +42,7 @@ const Register = (props) => {
       register({
         name,
         email,
-        password
+        password,
       })
     }
   }

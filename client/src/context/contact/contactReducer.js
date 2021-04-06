@@ -11,6 +11,7 @@ import {
   CLEAR_CONTACTS,
 } from '../types'
 
+//eslint-disable-next-line
 export default (state, action) => {
   switch (action.type) {
     case GET_CONTACTS:
@@ -47,7 +48,7 @@ export default (state, action) => {
         contacts: null,
         filtered: null,
         error: null,
-        current: null
+        current: null,
       }
     case SET_CURRENT:
       return {
