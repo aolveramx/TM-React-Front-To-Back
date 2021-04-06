@@ -25,11 +25,7 @@ const ContactForm = () => {
     phone: '',
     type: 'personal',
   })
-
-  const clearAll = () => {
-    clearCurrent()
-  }
-
+  
   const { name, email, phone, type } = contact
 
   const onChange = (e) =>
@@ -42,13 +38,11 @@ const ContactForm = () => {
     } else {
       updateContact(contact)
     }
+    clearAll()
+  }
 
-    setContact({
-      name: '',
-      email: '',
-      phone: '',
-      type: 'personal',
-    })
+  const clearAll = () => {
+    clearCurrent()
   }
 
   return (
