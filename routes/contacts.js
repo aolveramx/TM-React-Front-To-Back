@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const auth = require('../middleware/auth')
-const { body, validationResult } = require('express-validator');
+const { body, validationResult } = require('express-validator')
 
 const User = require('../models/User')
 const Contact = require('../models/Contact')
-
 
 /**
  * @route GET api/contacts
@@ -14,7 +13,9 @@ const Contact = require('../models/Contact')
  */
 router.get('/', auth, async (req, res) => {
   try {
-    const contacts = await Contact.find({ user: req.user.id }).sort({ date: -1 })
+    const contacts = await Contact.find({ user: req.user.id }).sort({
+      date: -1,
+    })
     res.json(contacts)
   } catch (error) {
     console.error(error.message)
@@ -27,22 +28,22 @@ router.get('/', auth, async (req, res) => {
  * @desc Add new contact
  * @access Private
  */
-router.post('/', [auth, [
-  body('name', 'Name is required').not().isEmpty()
-] ], 
+router.post(
+  '/',
+  [auth, [body('name', 'Name is required').not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req)
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-      }
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
 
     const { name, email, phone, type } = req.body
 
     try {
       const newContact = new Contact({
-        name, 
-        email, 
-        phone, 
+        name,
+        email,
+        phone,
         type,
         user: req.user.id
       })
@@ -82,11 +83,13 @@ router.put('/:id', auth, async (req, res) => {
       return res.status(401).json({ msg: 'Not Authorized' })
     }
 
-    contact = await Contact.findByIdAndUpdate(req.params.id, 
-      { $set: contactFields }, 
-      { $new: true })
+    contact = await Contact.findByIdAndUpdate(
+      req.params.id,
+      { $set: contactFields },
+      { $new: true }
+    )
 
-      res.json(contact)
+    res.json(contact)
   } catch (error) {
     console.error(error.message)
     res.status(500).send('Server Error')
